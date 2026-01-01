@@ -1,19 +1,27 @@
 using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
+using HarmonyLib;
 using Reactor;
 using Reactor.Networking;
 using Reactor.Networking.Attributes;
+using Reactor.Utilities;
 
 namespace Test;
 
-[BepInPlugin("com.test.mod", "Test Plugin", "1.0.0")]
+[BepInPlugin("com.SuperIdol.Test", "Test", "1.1.0")]
 [BepInProcess("Among Us.exe")]
 [BepInDependency(ReactorPlugin.Id)]
-[ReactorModFlags(ModFlags.RequireOnAllClients)] 
-public partial class TestPlugin : BasePlugin 
+[ReactorModFlags(ModFlags.RequireOnAllClients)]
+public partial class TestPlugin : BasePlugin
 {
+    public Harmony Harmony { get; } = new Harmony("Test");
+    public const string VersionString = "1.1.0";
+    public string OptionsTitleText => "Test";
+    public ConfigFile GetConfigFile() => Config;
     public override void Load()
     {
-        Log.LogInfo("Test Mod 1.0.0 is officially registered and visible!");
+        ReactorCredits.Register("Test", VersionString, false, ReactorCredits.AlwaysShow);
+        Harmony.PatchAll();
     }
 }

@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
+    <Description>Test</Description>
+    <Authors>Super Idol</Authors>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <NoWarn>$(NoWarn);CS0122;NU1605</NoWarn>
